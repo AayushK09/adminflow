@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { auth } from '@/lib/auth';
-import Image from 'next/image';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,17 +21,15 @@ export async function User() {
           size="icon"
           className="overflow-hidden rounded-full"
         >
-          <Image
-            src="/placeholder-user.jpg"
-            width={36}
-            height={36}
-            alt="Avatar"
-            className="overflow-hidden rounded-full"
-          />
+          <span className="flex size-9 items-center justify-center rounded-full bg-muted text-sm font-medium">
+            {session?.user?.name?.[0]?.toUpperCase() ?? 'A'}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{session?.user?.name ?? 'My Account'}</DropdownMenuLabel>
+        <DropdownMenuLabel>
+          {session?.user?.name ?? 'My Account'}
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
